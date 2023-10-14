@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">TamangFood</string>
+    <string name="tamang_food_service">Tamang FoodService</string>
+    <string name="welcome">Welcome</string>
+    <string name="title_walkthrough_1">All your favorites</string>
+    <string name="title_walkthrough_2">Free delivery offers</string>
+    <string name="title_walkthrough_3">Choose your food</string>
+    <string name="description_welcome">It’s a pleasure to meet you. We are excited that you’re here so let’s get started!</string>
+    <string name="description_walkthrough_1">Order from the best local restaurants with easy, on-demand delivery.</string>
+    <string name="description_walkthrough_2">Free delivery for new customers via Apple Pay and others payment methods.</string>
+    <string name="description_walkthrough_3">Easily find your type of food craving and you’ll get delivery in wide range. </string>
+    <string name="get_started">get started</string>
+    <string name="sign_in">Sign In</string>
+    <string name="welcome_to">Welcome to Tamang Food Services</string>
+    <string name="enter_your_sign_in">Enter your Phone number or Email address for sign in. Enjoy your food :)</string>
+    <string name="enter_your_forgot_password">Enter your email address and we will send you a reset instructions.</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_email">enter your email</string>
+    <string name="email_address">email address</string>
+    <string name="password">password</string>
+    <string name="enter_your_password">enter your password</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="or">Or</string>
+    <string name="create_new_account">Create new account.</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="reset_password">reset password</string>
+    <string name="reset_email_sent">Reset email sent</string>
+    <string name="having_problem">Having problem?</string>
+    <string name="we_have_sent_a_instructions_email_to">We have sent a instructions email to</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="full_name">full name</string>
+    <string name="enter_your_full_name">enter your full name</string>
+    <string name="by_signing">By Signing up you agree to our Terms Conditions Privacy Policy.</string>
+    <string name="connect_with_facebook">connect with facebook</string>
+    <string name="connect_with_google">connect with google</string>
+    <string name="don_t_have_account">Don\'t have account?</string>
+    <string name="send_again">send again</string>
+    <string name="reset_email">Reset Email</string>
+    <string name="enter_your_info">Enter your Name, Email and Password</string>
+    <string name="phone_number">phone number</string>
+    <string name="verify_phone_number">Verify phone number</string>
+    <string name="didn_t_receive_code">Didn’t receive code?</string>
+    <string name="resend_again">Resend Again.</string>
+    <string name="see_all">See all</string>
+    <string name="featured_partners">Featured Partners</string>
+    <string name="_25min">25min</string>
+    <string name="free">Free</string>
+    <string name="currency">$$</string>
+
+</resources>

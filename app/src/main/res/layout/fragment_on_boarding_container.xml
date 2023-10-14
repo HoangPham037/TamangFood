@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/Base.Theme.TamangFood.fullscreen"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.onboarding.OnBoardingContainerFragment">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <androidx.viewpager2.widget.ViewPager2
+           android:id="@+id/pager"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           app:layout_constraintBottom_toTopOf="@+id/tv_btn_get_start"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
+
+       <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+           android:layout_width="wrap_content"
+           android:id="@+id/worm_dot"
+           android:layout_height="wrap_content"
+           app:dotsColor="#22A45D"
+           android:layout_marginBottom="32dp"
+           app:dotsSize="10dp"
+           app:dotsStrokeColor="#868686"
+           app:layout_constraintBottom_toBottomOf="@+id/pager"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent" />
+
+       <TextView
+           android:id="@+id/tv_btn_get_start"
+           style="@style/get_started"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="80dp"
+           android:background="@drawable/bg"
+           android:text="@string/get_started"
+           android:textAllCaps="true"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent" />
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

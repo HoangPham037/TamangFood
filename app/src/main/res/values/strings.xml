@@ -75,5 +75,9 @@
     <string name="refer_to_friends">Refer to Friends</string>
     <string name="get_10_for_reffering_friends">Get $10 for reffering friends</string>
     <string name="logout">Logout</string>
+    <string name="best_picks_restaurants_by_team">Best Picks Restaurants by team</string>
+    <string name="all_restaurants">All Restaurants</string>
+    <string name="_4_5">4.5</string>
+    <string name="_200_ratings">200+ Ratings</string>
 
 </resources>

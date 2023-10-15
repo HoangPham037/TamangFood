@@ -79,5 +79,9 @@
     <string name="all_restaurants">All Restaurants</string>
     <string name="_4_5">4.5</string>
     <string name="_200_ratings">200+ Ratings</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="orders">Orders</string>
+    <string name="profile">Profile</string>
 
 </resources>

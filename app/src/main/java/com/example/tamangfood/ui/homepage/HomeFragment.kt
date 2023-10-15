@@ -31,13 +31,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     private fun observerDataPager() {
         homeViewModel.dataPager.observe(viewLifecycleOwner) {
-            val runnable = Runnable {
-                if (binding.viewPager.currentItem == it.size - 1) {
-                    binding.viewPager.currentItem = 0
-                } else {
-                    binding.viewPager.currentItem = binding.viewPager.currentItem + 1
-                }
-            }
+//            val runnable = Runnable {
+//                if (binding.viewPager.currentItem == it.size - 1) {
+//                    binding.viewPager.currentItem = 0
+//                } else {
+//                    binding.viewPager.currentItem = binding.viewPager.currentItem + 1
+//                }
+//            }
             pagerAdapter = PagerAdapter(it)
             binding.viewPager.adapter = pagerAdapter
             binding.indicator.setViewPager(binding.viewPager)
@@ -45,8 +45,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    handler.removeCallbacks(runnable)
-                    handler.postDelayed(runnable, 3000)
+//                    handler.removeCallbacks(runnable)
+//                    handler.postDelayed(runnable, 3000)
                 }
             })
         }

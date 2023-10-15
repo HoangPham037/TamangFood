@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/gpsFragment"
-        android:icon="@null"
-        android:title="home" />
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home_34"
+        android:title="@string/home" />
 
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search_34"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/ordersFragment"
+        android:icon="@drawable/ic_order_34"
+        android:title="@string/orders" />
+
+    <item
+        android:id="@+id/accountSettingsFragment"
+        android:icon="@drawable/ic_profile_34"
+        android:title="@string/profile" />
 </menu>

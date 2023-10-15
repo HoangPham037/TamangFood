@@ -83,5 +83,20 @@
         android:name="com.example.tamangfood.ui.homepage.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/accountSettingsFragment"
+        android:name="com.example.tamangfood.ui.accountsettings.AccountSettingsFragment"
+        android:label="fragment_account_settings"
+        tools:layout="@layout/fragment_account_settings" />
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.example.tamangfood.ui.orders.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.tamangfood.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 
 </navigation>

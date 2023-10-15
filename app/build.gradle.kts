@@ -64,7 +64,6 @@ dependencies {
     implementation ("com.google.firebase:firebase-auth-ktx:20.0.1")
 
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
-
-        implementation ("me.relex:circleindicator:2.1.6")
+    implementation ("me.relex:circleindicator:2.1.6")
 
 }

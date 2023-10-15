@@ -50,5 +50,9 @@
     <string name="_25min">25min</string>
     <string name="free">Free</string>
     <string name="currency">$$</string>
+    <string name="best_picks_restaurants_by_team">Best Picks Restaurants by team</string>
+    <string name="all_restaurants">All Restaurants</string>
+    <string name="_4_5">4.5</string>
+    <string name="_200_ratings">200+ Ratings</string>
 
 </resources>

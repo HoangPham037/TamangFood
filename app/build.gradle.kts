@@ -65,4 +65,6 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 
+        implementation ("me.relex:circleindicator:2.1.6")
+
 }

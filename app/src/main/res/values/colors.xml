@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blueGra">#6DCBFF</color>
+
+    <color name="inactive">#4DFFFFFF</color>
+    <color name="active">#FFFFFF</color>
 </resources>

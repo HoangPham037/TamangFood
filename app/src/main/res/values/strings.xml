@@ -50,5 +50,30 @@
     <string name="_25min">25min</string>
     <string name="free">Free</string>
     <string name="currency">$$</string>
+    <string name="faq">faq</string>
+    <string name="frequently_asked_questions">Frequently asked questions</string>
+    <string name="rate_us_playstore_appstor">Rate us playstore, appstor</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="more">more</string>
+    <string name="notifications">notifications</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="for_daily_update_you_will_get_it">For daily update you will get it</string>
+    <string name="sms_notifications">SMS Notifications</string>
+    <string name="promotional_notifications">Promotional Notifications</string>
+    <string name="update_your_settings_like_notifications_payments_profile_edit_etc">Update your settings like notifications, payments, profile edit etc.</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="profile_information">Profile Information</string>
+    <string name="change_your_account_information">Change your account information</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_your_password">Change your password</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="add_your_credit_amp_debit_cards"><![CDATA[Add your credit & debit cards]]></string>
+    <string name="locations">Locations</string>
+    <string name="add_or_remove_your_delivery_locations">Add or remove your delivery locations</string>
+    <string name="add_social_account">Add Social Account</string>
+    <string name="add_facebook_twitter_etc">Add Facebook, Twitter etc</string>
+    <string name="refer_to_friends">Refer to Friends</string>
+    <string name="get_10_for_reffering_friends">Get $10 for reffering friends</string>
+    <string name="logout">Logout</string>
 
 </resources>

@@ -4,9 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemFeaturedPartnersHorizontalBinding
+import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
 import com.example.tamangfood.ui.homepage.model.Partners
 
-class RestaurantAdapter(private val myList: List<Partners>) :
+class RestaurantAdapter(
+    private val myList: List<Partners>,
+    private val listener: OnItemClickListener
+) :
     RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemFeaturedPartnersHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -29,5 +33,8 @@ class RestaurantAdapter(private val myList: List<Partners>) :
 
     override fun getItemCount(): Int = myList.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(myList[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(myList[position])
+        listener.onItemClick(myList[position])
+    }
 }

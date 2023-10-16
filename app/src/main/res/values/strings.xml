@@ -83,5 +83,6 @@
     <string name="search">Search</string>
     <string name="orders">Orders</string>
     <string name="profile">Profile</string>
+    <string name="featured_items">Featured Items</string>
 
 </resources>

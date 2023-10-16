@@ -1,93 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="5dp"
-    android:layout_height="wrap_content">
-
-    <com.example.tamangfood.view.RoundRectCornerImageView
-        android:id="@+id/img_item_product"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/item_product"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_item_product"
+        android:id="@+id/layout_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:letterSpacing="-0.02"
-            android:textColor="#010F07"
-            android:textSize="@dimen/text_size_18"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Cookie Sandwich" />
-
-        <TextView
-            android:id="@+id/tv_description_product"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            app:layout_constraintBottom_toTopOf="@+id/textView20"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21"
-            tools:text="Shortbread, chocolate turtle cookies, and red velvet." />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/currency"
-            android:textAppearance="@style/text_description_type_"
+        <com.example.tamangfood.view.RoundRectCornerImageView
+            android:id="@+id/img_item_product"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/item_product"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView7"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:src="@drawable/oval"
-            app:layout_constraintBottom_toBottomOf="@+id/textView20"
-            app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toTopOf="@+id/textView20" />
-
-        <TextView
-            android:id="@+id/tv_name_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textAppearance="@style/text_description_type_"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView7"
-            app:layout_constraintStart_toEndOf="@+id/appCompatImageView7"
-            app:layout_constraintTop_toTopOf="@+id/appCompatImageView7"
-            tools:text="Chinese" />
-
-        <TextView
-            android:textStyle="bold"
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="#EEA734"
-            android:textSize="@dimen/text_size_14"
+            android:layout_height="0dp"
+            android:layout_marginStart="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="aud$10" />
+            app:layout_constraintStart_toEndOf="@+id/img_item_product"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_name_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="-0.02"
+                android:textColor="#010F07"
+                android:textSize="@dimen/text_size_18"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Cookie Sandwich" />
+
+            <TextView
+                android:id="@+id/tv_description_product"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                app:layout_constraintBottom_toTopOf="@+id/tv_currency"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_product"
+                tools:text="Shortbread, chocolate turtle cookies, and red velvet." />
+
+            <TextView
+                android:id="@+id/tv_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/currency"
+                android:textAppearance="@style/text_description_type_"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:src="@drawable/oval"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_currency"
+                app:layout_constraintStart_toEndOf="@+id/tv_currency"
+                app:layout_constraintTop_toTopOf="@+id/tv_currency" />
+
+            <TextView
+                android:id="@+id/tv_name_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="@style/text_description_type_"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView7"
+                app:layout_constraintStart_toEndOf="@+id/appCompatImageView7"
+                app:layout_constraintTop_toTopOf="@+id/appCompatImageView7"
+                tools:text="Chinese" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="#EEA734"
+                android:textSize="@dimen/text_size_14"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="aud$10" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="#C4C4C4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_block" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

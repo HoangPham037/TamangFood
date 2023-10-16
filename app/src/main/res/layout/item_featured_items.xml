@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_marginEnd="14dp">
 
     <com.example.tamangfood.view.RoundRectCornerImageView
         android:id="@+id/img_featured_item"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_featured_item"
+        android:src="@drawable/img_featured_item_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         tools:text="Cookie Sandwich" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/tv_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/currency"
@@ -44,9 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:src="@drawable/oval"
-        app:layout_constraintBottom_toBottomOf="@+id/textView20"
-        app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toTopOf="@+id/textView20" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_currency"
+        app:layout_constraintStart_toEndOf="@+id/tv_currency"
+        app:layout_constraintTop_toTopOf="@+id/tv_currency" />
 
     <TextView
         android:id="@+id/tv_name_type"

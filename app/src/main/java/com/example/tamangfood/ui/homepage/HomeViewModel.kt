@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.tamangfood.R
 import com.example.tamangfood.ui.homepage.model.ItemPager
 import com.example.tamangfood.ui.homepage.model.Partners
+import com.example.tamangfood.ui.singlerestaurent.model.Product
 
 class HomeViewModel : ViewModel() {
     private val _dataFeaturedPartners = MutableLiveData<List<Partners>>()
@@ -34,14 +35,68 @@ class HomeViewModel : ViewModel() {
     }
 }
 
+private val setListType = listOf(
+    "$$", "Viet Nam"
+)
+
+private fun setListFeaturedProduct(): List<Product> {
+    val productOne = Product(
+        R.drawable.img_featured_item_one,
+        "Cookie Sandwich",
+        "Shortbread, chocolate turtle cookies, and red velvet.",
+        10f,
+        setListType,
+        "SeaFood"
+    )
+    val productTwo = Product(
+        R.drawable.img_featured_item_one,
+        "Cookie Sandwich",
+        "Shortbread, chocolate turtle cookies, and red velvet.",
+        10f,
+        setListType,
+        "Appetizers"
+    )
+    val productThree = Product(
+        R.drawable.item_featured_item_two,
+        "Cookie Sandwich",
+        "Shortbread, chocolate turtle cookies, and red velvet.",
+        10f,
+        setListType,
+        "SeaFood"
+    )
+    val productFour = Product(
+        R.drawable.item_featured_item_three,
+        "Cookie Sandwich",
+        "Shortbread, chocolate turtle cookies, and red velvet.",
+        10f,
+        setListType,
+        "SeaFood"
+    )
+    val productFive = Product(
+        R.drawable.item_featured_item_four,
+        "Cookie Sandwich",
+        "Shortbread, chocolate turtle cookies, and red velvet.",
+        10f,
+        setListType,
+        "Appetizers"
+    )
+    return listOf(
+        productOne, productTwo, productThree, productFour, productFive
+    )
+}
+
 private fun setListFeaturedPartners(): List<Partners> {
     val dailyOne = Partners(
-        null, R.drawable.image_test, "Caffe house", "so1 pham van dong",
-        setListType()
+        setListPager1(), R.drawable.image_test, "Caffe house", "so1 pham van dong",
+        setListType(), setListFeaturedProduct()
     )
     val dailyTwo = Partners(
-        null, R.drawable.image_test_two, "Caffe house", "so 21 co nhue",
-        setListType()
+        setListPager2(),
+        R.drawable.image_test_two,
+        "Caffe house",
+        "so 21 co nhue",
+        setListType(),
+        setListFeaturedProduct()
     )
     return listOf(
         dailyOne, dailyTwo
@@ -50,12 +105,20 @@ private fun setListFeaturedPartners(): List<Partners> {
 
 private fun setListBestPickRestaurant(): List<Partners> {
     val dailyOne = Partners(
-        null, R.drawable.best_pick_one, "Caffe house", "so1 pham van dong",
-        setListType()
+        null,
+        R.drawable.best_pick_one,
+        "Caffe house",
+        "so1 pham van dong",
+        setListType(),
+        setListFeaturedProduct()
     )
     val dailyTwo = Partners(
-        null, R.drawable.best_pick_two, "Pizza Viet Nam", "so 21 co nhue",
-        setListType()
+        null,
+        R.drawable.best_pick_two,
+        "Pizza Viet Nam",
+        "so 21 co nhue",
+        setListType(),
+        setListFeaturedProduct()
     )
     return listOf(
         dailyOne, dailyTwo
@@ -101,10 +164,19 @@ private fun setListPager3(): List<ItemPager> {
 
 private fun setListAllRestaurant(): List<Partners> {
     val restaurantOne =
-        Partners(setListPager1(), R.drawable.image_test, "Pizza hurt", "", setListType())
+        Partners(
+            setListPager1(), R.drawable.image_test, "Pizza hurt", "", setListType(),
+            setListFeaturedProduct()
+        )
     val restaurantTwo =
-        Partners(setListPager2(), R.drawable.image_test, "Caffe house", "", setListType())
+        Partners(
+            setListPager2(), R.drawable.image_test, "Caffe house", "", setListType(),
+            setListFeaturedProduct()
+        )
     val restaurantThree =
-        Partners(setListPager3(), R.drawable.image_test, "Vina Caffe", "", setListType())
+        Partners(
+            setListPager3(), R.drawable.image_test, "Vina Caffe", "", setListType(),
+            setListFeaturedProduct()
+        )
     return listOf(restaurantOne, restaurantTwo, restaurantThree)
 }

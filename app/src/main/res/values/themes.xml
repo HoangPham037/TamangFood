@@ -18,6 +18,12 @@
 
     <style name="Theme.TamangFood" parent="Base.Theme.TamangFood" />
 
+    <style name="Theme.TamangFood.NoactionBar" parent="Theme.TamangFood">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
     <style name="Base.Theme.TamangFood.fullscreen" parent="Base.Theme.TamangFood">
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>

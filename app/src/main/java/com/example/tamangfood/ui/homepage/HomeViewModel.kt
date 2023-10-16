@@ -35,16 +35,28 @@ class HomeViewModel : ViewModel() {
 }
 
 private fun setListFeaturedPartners(): List<Partners> {
-    val dailyOne = Partners(null, R.drawable.image_test, "Caffe house", "so1 pham van dong")
-    val dailyTwo = Partners(null, R.drawable.image_test_two, "Caffe house", "so 21 co nhue")
+    val dailyOne = Partners(
+        null, R.drawable.image_test, "Caffe house", "so1 pham van dong",
+        setListType()
+    )
+    val dailyTwo = Partners(
+        null, R.drawable.image_test_two, "Caffe house", "so 21 co nhue",
+        setListType()
+    )
     return listOf(
         dailyOne, dailyTwo
     )
 }
 
 private fun setListBestPickRestaurant(): List<Partners> {
-    val dailyOne = Partners(null, R.drawable.best_pick_one, "Caffe house", "so1 pham van dong")
-    val dailyTwo = Partners(null, R.drawable.best_pick_two, "Pizza Viet Nam", "so 21 co nhue")
+    val dailyOne = Partners(
+        null, R.drawable.best_pick_one, "Caffe house", "so1 pham van dong",
+        setListType()
+    )
+    val dailyTwo = Partners(
+        null, R.drawable.best_pick_two, "Pizza Viet Nam", "so 21 co nhue",
+        setListType()
+    )
     return listOf(
         dailyOne, dailyTwo
     )

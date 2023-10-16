@@ -29,8 +29,10 @@ abstract class BaseFragment<VB: ViewBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observerData()
+        setUpOnClickListener()
     }
 
+    open fun setUpOnClickListener() {}
     open fun observerData(){}
 
     override fun onDestroy() {

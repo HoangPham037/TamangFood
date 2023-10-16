@@ -3,7 +3,9 @@ package com.example.tamangfood.ui.homepage
 import android.os.Handler
 import android.os.Looper
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.example.tamangfood.R
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentHomeBinding
 import com.example.tamangfood.ui.homepage.adapter.AllRestaurantAdapter
@@ -77,5 +79,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         homeViewModel.fetchListAllRestaurant()
     }
 
+    override fun setUpOnClickListener() {
+        super.setUpOnClickListener()
+        binding.seeAllFeaturedPartners.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_featuredPartnersFragment)
+        }
+        binding.seeAllBestPick.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_bestPickFragment)
+        }
+    }
 
 }

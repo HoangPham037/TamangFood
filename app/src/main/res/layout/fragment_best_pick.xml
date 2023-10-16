@@ -35,7 +35,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/featured_partners"
+                android:text="Best Pick Restaurant by team"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ic_back"
@@ -46,7 +46,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc_featured_partners"
+            android:id="@+id/rc_best_pick"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

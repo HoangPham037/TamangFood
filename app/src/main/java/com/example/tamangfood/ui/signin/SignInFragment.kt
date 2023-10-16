@@ -21,9 +21,9 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
         binding.layoutBtnSignIn.setOnClickListener {
-            val email = binding.edtEmail.text.toString()
-            val password = binding.edtPassword.text.toString()
-            signInWithEmailUsernamePassword(email, password)
+//            val email = binding.edtEmail.text.toString()
+//            val password = binding.edtPassword.text.toString()
+//            signInWithEmailUsernamePassword(email, password)
             findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
         }
     }

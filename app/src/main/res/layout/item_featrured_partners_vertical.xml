@@ -61,7 +61,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_delivery" />
+                android:src="@drawable/ic_delivery_white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
             android:background="@drawable/bgr_button"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            tools:text="4.5"
+            android:text="@string/_4_5"
             android:textColor="#FFFFFF"
             android:textSize="@dimen/text_size_12"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -99,7 +99,7 @@
         tools:text="Tacos Nanchas" />
 
     <TextView
-        android:id="@+id/tv_country_one"
+        android:id="@+id/tv_type_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -117,11 +117,11 @@
         android:layout_marginStart="13dp"
         android:src="@drawable/oval"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_country_one"
+        app:layout_constraintStart_toEndOf="@+id/tv_type_one"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_partner" />
 
     <TextView
-        android:id="@+id/tv_country_two"
+        android:id="@+id/tv_type_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

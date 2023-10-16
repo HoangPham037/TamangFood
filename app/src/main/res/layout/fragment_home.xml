@@ -70,6 +70,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/see_all_featured_partners"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -119,6 +120,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/see_all_best_pick"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

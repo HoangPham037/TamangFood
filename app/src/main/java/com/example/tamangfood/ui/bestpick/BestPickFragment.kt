@@ -1,25 +1,25 @@
-package com.example.tamangfood.ui.featuredpartners
+package com.example.tamangfood.ui.bestpick
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tamangfood.base.BaseFragment
-import com.example.tamangfood.databinding.FragmentFeaturedPartnersBinding
+import com.example.tamangfood.databinding.FragmentBestPickBinding
 import com.example.tamangfood.ui.featuredpartners.adapter.RestaurantVerticalAdapter
 import com.example.tamangfood.ui.homepage.HomeViewModel
 
-class FeaturedPartnersFragment : BaseFragment<FragmentFeaturedPartnersBinding>(
-    FragmentFeaturedPartnersBinding::inflate
+class BestPickFragment : BaseFragment<FragmentBestPickBinding>(
+    FragmentBestPickBinding::inflate
 ) {
+
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var adapter: RestaurantVerticalAdapter
-
     override fun observerData() {
         super.observerData()
-        homeViewModel.dataFeaturedPartners.observe(viewLifecycleOwner) {
+        homeViewModel.dataBestPickRestaurant.observe(viewLifecycleOwner) {
             adapter = RestaurantVerticalAdapter(it)
-            binding.rcFeaturedPartners.adapter = adapter
+            binding.rcBestPick.adapter = adapter
         }
-        homeViewModel.fetchListFeaturedPartners()
+        homeViewModel.fetchListBestPickRestaurant()
     }
 
     override fun setUpOnClickListener() {
@@ -28,4 +28,5 @@ class FeaturedPartnersFragment : BaseFragment<FragmentFeaturedPartnersBinding>(
             findNavController().navigateUp()
         }
     }
+
 }

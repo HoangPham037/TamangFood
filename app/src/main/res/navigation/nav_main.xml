@@ -101,7 +101,15 @@
         android:id="@+id/accountSettingsFragment"
         android:name="com.example.tamangfood.ui.accountsettings.AccountSettingsFragment"
         android:label="fragment_account_settings"
-        tools:layout="@layout/fragment_account_settings" />
+        tools:layout="@layout/fragment_account_settings" >
+        <action
+            android:id="@+id/action_accountSettingsFragment_to_profileSettingsFragment"
+            app:destination="@id/profileSettingsFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_axit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/ordersFragment"
         android:name="com.example.tamangfood.ui.orders.OrdersFragment"
@@ -141,6 +149,29 @@
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_axit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileSettingsFragment"
+        android:name="com.example.tamangfood.ui.accountsettings.profilesettings.ProfileSettingsFragment"
+        android:label="fragment_profile_settings"
+        tools:layout="@layout/fragment_profile_settings" >
+        <action
+            android:id="@+id/action_profileSettingsFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_axit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.tamangfood.ui.accountsettings.profilesettings.changepassword.ChangePasswordFragment"
+        android:label="ChangePasswordFragment" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim" />
     </fragment>
 
 </navigation>

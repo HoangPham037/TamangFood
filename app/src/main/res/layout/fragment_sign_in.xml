@@ -98,6 +98,7 @@
                         android:textSize="12sp" />
 
                     <EditText
+                        android:backgroundTint="#F3F2F2"
                         android:id="@+id/edt_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -137,6 +138,7 @@
 
 
                     <EditText
+                        android:backgroundTint="#F3F2F2"
                         android:id="@+id/edt_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

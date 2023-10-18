@@ -60,6 +60,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tv_goto_setting_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/text_size_16"

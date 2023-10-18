@@ -1,12 +1,15 @@
 package com.example.tamangfood.ui.signin
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tamangfood.R
+import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -15,15 +18,16 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(
     FragmentSignInBinding::inflate
 ) {
     private lateinit var auth: FirebaseAuth
+    private val shareViewModel : ShareViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvSignUp.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
         binding.layoutBtnSignIn.setOnClickListener {
-//            val email = binding.edtEmail.text.toString()
-//            val password = binding.edtPassword.text.toString()
-//            signInWithEmailUsernamePassword(email, password)
+            val email = binding.edtEmail.text.toString()
+            val password = binding.edtPassword.text.toString()
+            signInWithEmailUsernamePassword(email, password)
             findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
         }
     }
@@ -34,6 +38,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    shareViewModel.password.value = password
                     showProgress(false)
                     // Sign in success, update UI with the signed-in user's information
                 } else {

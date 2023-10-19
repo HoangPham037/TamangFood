@@ -8,6 +8,7 @@ import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
 import com.example.tamangfood.ui.featuredpartners.adapter.RestaurantVerticalAdapter
 import com.example.tamangfood.ui.homepage.HomeViewModel
 import com.example.tamangfood.ui.homepage.model.Partners
+import com.example.tamangfood.ui.singlerestaurent.model.Product
 
 class BestPickFragment : BaseFragment<FragmentBestPickBinding>(
     FragmentBestPickBinding::inflate

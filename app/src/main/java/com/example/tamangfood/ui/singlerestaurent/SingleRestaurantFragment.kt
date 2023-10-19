@@ -16,11 +16,12 @@ import com.example.tamangfood.databinding.FragmentSingleRestaurantBinding
 import com.example.tamangfood.ui.homepage.adapter.PagerAdapter
 import com.example.tamangfood.ui.singlerestaurent.adapter.FeaturedItemAdapter
 import com.example.tamangfood.ui.singlerestaurent.adapter.TypeFoodVPAdapter
+import com.example.tamangfood.ui.singlerestaurent.model.Product
 import com.google.android.material.tabs.TabLayoutMediator
 
 class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
     FragmentSingleRestaurantBinding::inflate
-) {
+), IOnItemClickListener {
     private val shareViewModel: ShareViewModel by activityViewModels()
     private lateinit var featuredItemAdapter: FeaturedItemAdapter
     private lateinit var typeFoodVPAdapter: TypeFoodVPAdapter
@@ -53,8 +54,7 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
         super.observerData()
 
         shareViewModel.selectRestaurant.observe(viewLifecycleOwner) { restaurant ->
-
-            featuredItemAdapter = FeaturedItemAdapter(restaurant.listProduct)
+            featuredItemAdapter = FeaturedItemAdapter(restaurant.listProduct, this)
             binding.rcFeaturedItem.adapter = featuredItemAdapter
             pagerAdapter = PagerAdapter(restaurant.listPage)
             binding.viewPagerRestaurant.adapter = pagerAdapter
@@ -139,4 +139,10 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
             findNavController().navigateUp()
         }
     }
+
+    override fun itemClick(product: Product) {
+        shareViewModel.selectProduct.value = product
+        findNavController().navigate(R.id.action_singleRestaurantFragment_to_addToOrdersFragment)
+    }
+
 }

@@ -87,5 +87,18 @@
     <string name="new_password">new password</string>
     <string name="confirm_password">confirm password</string>
     <string name="change_settings">change settings</string>
+    <string name="choice_of_top_cookie">Choice of top Cookie</string>
+    <string name="required">Required</string>
+    <string name="chocolate_chip">Chocolate Chip</string>
+    <string name="cookies_and_cream">Cookies and Cream</string>
+    <string name="funfetti">Funfetti</string>
+    <string name="m_and_m">M and M</string>
+    <string name="red_velvet">Red Velvet</string>
+    <string name="peanut_butter">Peanut Butter</string>
+    <string name="snickerdoodle">Snickerdoodle</string>
+    <string name="white_chocolate_macadamia">White Chocolate Macadamia</string>
+    <string name="choice_of_bottom_cookie">Choice of Bottom Cookie</string>
+    <string name="add_to_order">add to order</string>
+    <string name="_01">01</string>
 
 </resources>

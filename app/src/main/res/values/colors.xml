@@ -11,4 +11,5 @@
 
     <color name="inactive">#4DFFFFFF</color>
     <color name="active">#FFFFFF</color>
+    <color name="color_radio_button"> </color>
 </resources>

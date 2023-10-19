@@ -42,42 +42,42 @@ private val setListType = listOf(
 private fun setListFeaturedProduct(): List<Product> {
     val productOne = Product(
         R.drawable.img_featured_item_one,
-        "Cookie Sandwich",
+        "Chow Fun",
         "Shortbread, chocolate turtle cookies, and red velvet.",
         10f,
-        setListType,
+        setListType(),
         "SeaFood"
     )
     val productTwo = Product(
         R.drawable.img_featured_item_one,
-        "Cookie Sandwich",
+        "Dim SUm",
         "Shortbread, chocolate turtle cookies, and red velvet.",
         10f,
-        setListType,
+        setListType(),
         "Appetizers"
     )
     val productThree = Product(
         R.drawable.item_featured_item_two,
-        "Cookie Sandwich",
+        "Fried Rice on Pot",
         "Shortbread, chocolate turtle cookies, and red velvet.",
         10f,
-        setListType,
+        setListType(),
         "SeaFood"
     )
     val productFour = Product(
         R.drawable.item_featured_item_three,
-        "Cookie Sandwich",
+        "Oyster On Ice",
         "Shortbread, chocolate turtle cookies, and red velvet.",
         10f,
-        setListType,
+        setListType(),
         "SeaFood"
     )
     val productFive = Product(
         R.drawable.item_featured_item_four,
-        "Cookie Sandwich",
+        "Oyster Dish",
         "Shortbread, chocolate turtle cookies, and red velvet.",
         10f,
-        setListType,
+        setListType(),
         "Appetizers"
     )
     return listOf(

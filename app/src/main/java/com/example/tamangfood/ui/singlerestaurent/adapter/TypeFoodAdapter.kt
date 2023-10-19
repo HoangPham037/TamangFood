@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemProductBinding
+import com.example.tamangfood.ui.singlerestaurent.IOnItemClickListener
 import com.example.tamangfood.ui.singlerestaurent.model.Product
 
 
-class TypeFoodAdapter(private val myList: List<Product>) :
+class TypeFoodAdapter(private val myList: List<Product>,private val listener: IOnItemClickListener) :
     RecyclerView.Adapter<TypeFoodAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -33,5 +34,10 @@ class TypeFoodAdapter(private val myList: List<Product>) :
 
     override fun getItemCount(): Int = myList.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(myList[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(myList[position])
+        holder.itemView.setOnClickListener {
+            listener.itemClick(myList[position])
+        }
+    }
 }

@@ -96,7 +96,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     override fun onItemClick(partners: Partners) {
         shareViewModel.selectRestaurant.value = partners
-//        findNavController().navigate(R.id.action_homeFragment_to_singleRestaurantFragment)
+        findNavController().navigate(R.id.action_homeFragment_to_singleRestaurantFragment)
     }
 
 }

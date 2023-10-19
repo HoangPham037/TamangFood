@@ -100,5 +100,16 @@
     <string name="choice_of_bottom_cookie">Choice of Bottom Cookie</string>
     <string name="add_to_order">add to order</string>
     <string name="_01">01</string>
+    <string name="your_orders">Your Orders</string>
+    <string name="promo_code">Promo code</string>
+    <string name="add_more_item">Add more item</string>
+    <string name="delivery">Delivery</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="continues">continue</string>
+    <string name="_4343">4343 4343 4343 4343 4343</string>
+    <string name="proceed_payment">Proceed Payment</string>
+    <string name="clear_all">clear all</string>
+    <string name="upcoming_orders">Upcoming orders</string>
+    <string name="past_orders">past orders</string>
 
 </resources>

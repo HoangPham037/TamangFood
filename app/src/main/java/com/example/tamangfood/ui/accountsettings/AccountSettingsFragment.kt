@@ -13,5 +13,8 @@ class AccountSettingsFragment : BaseFragment<FragmentAccountSettingsBinding>(
         binding.layoutSettings.tvGotoSettingProfile.setOnClickListener {
             findNavController().navigate(R.id.action_accountSettingsFragment_to_profileSettingsFragment)
         }
+        binding.layoutSettings.imgGotoPayment.setOnClickListener {
+            findNavController().navigate(R.id.action_accountSettingsFragment_to_paymentMethodFragment)
+        }
     }
 }

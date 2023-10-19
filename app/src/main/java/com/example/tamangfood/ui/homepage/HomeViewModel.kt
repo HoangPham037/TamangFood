@@ -105,7 +105,7 @@ private fun setListFeaturedPartners(): List<Partners> {
 
 private fun setListBestPickRestaurant(): List<Partners> {
     val dailyOne = Partners(
-        null,
+        setListPager3(),
         R.drawable.best_pick_one,
         "Caffe house",
         "so1 pham van dong",
@@ -113,7 +113,7 @@ private fun setListBestPickRestaurant(): List<Partners> {
         setListFeaturedProduct()
     )
     val dailyTwo = Partners(
-        null,
+        setListPager2(),
         R.drawable.best_pick_two,
         "Pizza Viet Nam",
         "so 21 co nhue",

@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment -> hideBottomNav()
                 R.id.signUpFragment -> hideBottomNav()
                 R.id.addToOrdersFragment -> hideBottomNav()
+                R.id.yourOrdersFragment -> hideBottomNav()
+                R.id.paymentMethodFragment ->hideBottomNav()
+                R.id.myPaymentMethodsFragment -> hideBottomNav()
+                R.id.addPaymentFragment -> hideBottomNav()
                 else -> showBottomNav()
             }
         }

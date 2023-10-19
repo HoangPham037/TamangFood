@@ -35,6 +35,8 @@ class RestaurantAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(myList[position])
-        listener.onItemClick(myList[position])
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(myList[position])
+        }
     }
 }

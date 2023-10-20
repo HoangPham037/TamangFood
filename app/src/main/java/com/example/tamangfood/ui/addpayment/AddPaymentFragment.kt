@@ -10,6 +10,8 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentAddPaymentBinding
+import com.example.tamangfood.extensions.gone
+import com.example.tamangfood.extensions.visible
 import com.example.tamangfood.ui.addpayment.model.PaymentData
 
 
@@ -151,9 +153,9 @@ class AddPaymentFragment : BaseFragment<FragmentAddPaymentBinding>(
 
     private fun showProgress(show: Boolean) {
         if (show) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.progressBar.visible()
         } else {
-            binding.progressBar.visibility = View.GONE
+            binding.progressBar.gone()
         }
     }
 }

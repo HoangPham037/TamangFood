@@ -7,6 +7,7 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentYourOrdersBinding
+import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.ui.orders.adapter.OrdersAdapter
 
 class YourOrdersFragment : BaseFragment<FragmentYourOrdersBinding>(
@@ -17,7 +18,6 @@ class YourOrdersFragment : BaseFragment<FragmentYourOrdersBinding>(
     override fun observerData() {
         super.observerData()
         shareViewModel.addToOrder.observe(viewLifecycleOwner) {
-            Log.d("Hoang.pv@extremevn.com", "listOrder: Order: ${it.size}");
             ordersAdapter = OrdersAdapter(it)
             binding.rcYourOrders.adapter = ordersAdapter
         }
@@ -25,10 +25,10 @@ class YourOrdersFragment : BaseFragment<FragmentYourOrdersBinding>(
 
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.imgBack.setOnClickListener {
+        binding.imgBack.setSafeOnClickListener {
             findNavController().navigateUp()
         }
-        binding.btnContinue.setOnClickListener {
+        binding.btnContinue.setSafeOnClickListener {
             findNavController().navigate(R.id.action_yourOrdersFragment_to_addPaymentFragment)
         }
     }

@@ -1,19 +1,16 @@
 package com.example.tamangfood.ui.accountsettings.profilesettings.changepassword
 
 import android.text.TextUtils
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
-import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
+import com.example.tamangfood.common.Config.showHidePassword
+import com.example.tamangfood.common.Config.showProgressBar
 import com.example.tamangfood.databinding.FragmentChangePasswordBinding
+import com.example.tamangfood.extensions.setSafeOnClickListener
+import com.example.tamangfood.extensions.showLongLengthToast
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -21,25 +18,29 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding>(
     FragmentChangePasswordBinding::inflate
 ) {
     private val shareViewModel: ShareViewModel by activityViewModels()
-    private var password: String?=null
+    private var password: String? = null
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.imgInvisiblePass.setOnClickListener {
-            showHidePassword(binding.imgInvisiblePass, binding.edtPassword)
+        binding.imgInvisiblePass.setSafeOnClickListener {
+            showHidePassword(binding.imgInvisiblePass, binding.edtPassword, requireContext())
         }
-        binding.imgInvisibleNewPass.setOnClickListener {
-            showHidePassword(binding.imgInvisibleNewPass, binding.edtNewPass)
+        binding.imgInvisibleNewPass.setSafeOnClickListener {
+            showHidePassword(binding.imgInvisibleNewPass, binding.edtNewPass, requireContext())
         }
-        binding.imgInvisibleConfirmPass.setOnClickListener {
-            showHidePassword(binding.imgInvisibleConfirmPass, binding.edtConfirmPass)
+        binding.imgInvisibleConfirmPass.setSafeOnClickListener {
+            showHidePassword(
+                binding.imgInvisibleConfirmPass,
+                binding.edtConfirmPass,
+                requireContext()
+            )
 
         }
-        binding.imgBack.setOnClickListener {
+        binding.imgBack.setSafeOnClickListener {
             findNavController().navigateUp()
         }
 
-        binding.layoutBtnChangePass.setOnClickListener {
-            showProgress(true)
+        binding.layoutBtnChangePass.setSafeOnClickListener {
+            showProgressBar(binding.progressBar, true)
             val pass = binding.edtPassword.text.toString().trim()
             val newPass = binding.edtNewPass.text.toString().trim()
             val confirmPass = binding.edtConfirmPass.text.toString().trim()
@@ -47,19 +48,19 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding>(
             if (password != pass) {
                 binding.edtPassword.error = "Incorrect password"
             }
-            if (newPass != confirmPass){
+            if (newPass != confirmPass) {
                 binding.edtConfirmPass.error = "password does not match"
-            }else {
+            } else {
                 val user = Firebase.auth.currentUser
                 user!!.updatePassword(confirmPass)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(requireContext(), "update success", Toast.LENGTH_SHORT).show()
-                            showProgress(false)
+                            requireContext().showLongLengthToast("update success")
+                            showProgressBar(binding.progressBar, false)
                             findNavController().navigate(R.id.action_changePasswordFragment_to_signInFragment)
-                        }else{
-                            Toast.makeText(requireContext(), "update error", Toast.LENGTH_SHORT).show()
-                            showProgress(false)
+                        } else {
+                            requireContext().showLongLengthToast("update error")
+                            showProgressBar(binding.progressBar, false)
                         }
                     }
 
@@ -85,33 +86,6 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding>(
         }
         if (TextUtils.isEmpty(confirmPass)) {
             binding.edtPassword.error = "cannot be left blank"
-        }
-    }
-
-    private fun showHidePassword(view: View, edt: View) {
-        if ((edt as EditText).transformationMethod is PasswordTransformationMethod) {
-            edt.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            (view as ImageView).setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_visible
-                )
-            )
-        } else {
-            (view as ImageView).setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_invisible
-                )
-            )
-            edt.transformationMethod = PasswordTransformationMethod.getInstance()
-        }
-    }
-    private fun showProgress(show: Boolean) {
-        if (show) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
         }
     }
 }

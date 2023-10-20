@@ -7,6 +7,7 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentFeaturedPartnersBinding
+import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.ui.featuredpartners.adapter.RestaurantVerticalAdapter
 import com.example.tamangfood.ui.homepage.HomeViewModel
 import com.example.tamangfood.ui.homepage.model.Partners
@@ -30,7 +31,7 @@ class FeaturedPartnersFragment : BaseFragment<FragmentFeaturedPartnersBinding>(
 
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.icBack.setOnClickListener {
+        binding.icBack.setSafeOnClickListener {
             findNavController().navigateUp()
         }
     }

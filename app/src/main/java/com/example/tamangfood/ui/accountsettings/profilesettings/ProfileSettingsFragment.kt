@@ -12,6 +12,7 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentProfileSettingsBinding
+import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -22,10 +23,10 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     private val shareViewModel: ShareViewModel by activityViewModels()
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.tvChange.setOnClickListener {
+        binding.tvChange.setSafeOnClickListener {
             findNavController().navigate(R.id.action_profileSettingsFragment_to_changePasswordFragment)
         }
-        binding.imgBack.setOnClickListener {
+        binding.imgBack.setSafeOnClickListener {
             findNavController().navigateUp()
         }
     }

@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentBestPickBinding
+import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
 import com.example.tamangfood.ui.featuredpartners.adapter.RestaurantVerticalAdapter
 import com.example.tamangfood.ui.homepage.HomeViewModel
@@ -27,7 +28,7 @@ class BestPickFragment : BaseFragment<FragmentBestPickBinding>(
 
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.icBack.setOnClickListener {
+        binding.icBack.setSafeOnClickListener {
             findNavController().navigateUp()
         }
     }

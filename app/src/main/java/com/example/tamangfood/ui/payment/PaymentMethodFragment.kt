@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.tamangfood.R
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentPaymentMethodBinding
+import com.example.tamangfood.extensions.setSafeOnClickListener
 
 
 class PaymentMethodFragment : BaseFragment<FragmentPaymentMethodBinding>(
@@ -17,10 +18,10 @@ class PaymentMethodFragment : BaseFragment<FragmentPaymentMethodBinding>(
 
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.imgGotoPaypal.setOnClickListener {
+        binding.imgGotoPaypal.setSafeOnClickListener {
             findNavController().navigate(R.id.action_paymentMethodFragment_to_myPaymentMethodsFragment)
         }
-        binding.imgBack.setOnClickListener {
+        binding.imgBack.setSafeOnClickListener {
             findNavController().navigateUp()
         }
     }

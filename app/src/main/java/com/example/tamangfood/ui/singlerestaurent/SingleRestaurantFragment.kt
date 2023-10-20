@@ -12,6 +12,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
+import com.example.tamangfood.common.Config
+import com.example.tamangfood.common.Config.setCurrentIndicator
+import com.example.tamangfood.common.Config.setIndicator
 import com.example.tamangfood.databinding.FragmentSingleRestaurantBinding
 import com.example.tamangfood.ui.homepage.adapter.PagerAdapter
 import com.example.tamangfood.ui.singlerestaurent.adapter.FeaturedItemAdapter
@@ -57,14 +60,21 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
             featuredItemAdapter = FeaturedItemAdapter(restaurant.listProduct, this)
             binding.rcFeaturedItem.adapter = featuredItemAdapter
             pagerAdapter = PagerAdapter(restaurant.listPage)
+
             binding.viewPagerRestaurant.adapter = pagerAdapter
-            restaurant.listPage?.let { setIndicator(binding.indicatorLayout, it.size) }
-            setCurrentIndicator(0, binding.indicatorLayout)
+            restaurant.listPage?.let {
+                setIndicator(
+                    binding.indicatorLayout,
+                    it.size,
+                    requireContext()
+                )
+            }
+            setCurrentIndicator(0, binding.indicatorLayout, requireContext())
             binding.viewPagerRestaurant.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    setCurrentIndicator(position, binding.indicatorLayout)
+                    setCurrentIndicator(position, binding.indicatorLayout, requireContext())
                 }
             })
             binding.topText.tvNameRestaurant.text = restaurant.name
@@ -79,46 +89,6 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
                 textView.text = listType[index]
             }
         }
-    }
-
-    private fun setIndicator(view: ViewGroup, pageSize: Int) {
-        val layoutParams = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        layoutParams.setMargins(8, 0, 8, 0)
-
-        for (i in 0 until pageSize) {
-            val imageView = ImageView(context)
-            imageView.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(), R.drawable.indicator_inactive
-                )
-            )
-            imageView.layoutParams = layoutParams
-            view.addView(imageView)
-        }
-    }
-
-    private fun setCurrentIndicator(index: Int, view: ViewGroup) {
-        val childCount = view.childCount
-        for (i in 0 until childCount) {
-            val image = view.getChildAt(i) as ImageView
-            if (i == index) {
-                image.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(), R.drawable.indicator_active
-                    )
-                )
-            } else {
-                image.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.indicator_inactive
-                    )
-                )
-            }
-        }
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

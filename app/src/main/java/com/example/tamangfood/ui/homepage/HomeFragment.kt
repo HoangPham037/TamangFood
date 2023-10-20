@@ -10,6 +10,7 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentHomeBinding
+import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
 import com.example.tamangfood.ui.homepage.adapter.AllRestaurantAdapter
 import com.example.tamangfood.ui.homepage.adapter.PagerAdapter
@@ -27,7 +28,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     private lateinit var allRestaurantAdapter: AllRestaurantAdapter
     private lateinit var pagerAdapter: PagerAdapter
 
-    val handler = Handler(Looper.getMainLooper())
     override fun observerData() {
         super.observerData()
         observerDataPager()
@@ -38,13 +38,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     private fun observerDataPager() {
         homeViewModel.dataPager.observe(viewLifecycleOwner) {
-//            val runnable = Runnable {
-//                if (binding.viewPager.currentItem == it.size - 1) {
-//                    binding.viewPager.currentItem = 0
-//                } else {
-//                    binding.viewPager.currentItem = binding.viewPager.currentItem + 1
-//                }
-//            }
             pagerAdapter = PagerAdapter(it)
             binding.viewPager.adapter = pagerAdapter
             binding.indicator.setViewPager(binding.viewPager)
@@ -86,10 +79,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.seeAllFeaturedPartners.setOnClickListener {
+        binding.seeAllFeaturedPartners.setSafeOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_featuredPartnersFragment)
         }
-        binding.seeAllBestPick.setOnClickListener {
+        binding.seeAllBestPick.setSafeOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_bestPickFragment)
         }
     }

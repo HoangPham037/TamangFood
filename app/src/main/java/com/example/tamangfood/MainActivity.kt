@@ -1,12 +1,13 @@
 package com.example.tamangfood
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.tamangfood.databinding.ActivityMainBinding
+import com.example.tamangfood.extensions.gone
+import com.example.tamangfood.extensions.visible
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,8 +17,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-       navController = navHostFragment.navController
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
 //        NavigationUI.setupWithNavController(binding.bottomNav, navController, false)
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -28,21 +30,20 @@ class MainActivity : AppCompatActivity() {
                 R.id.signUpFragment -> hideBottomNav()
                 R.id.addToOrdersFragment -> hideBottomNav()
                 R.id.yourOrdersFragment -> hideBottomNav()
-                R.id.paymentMethodFragment ->hideBottomNav()
+                R.id.paymentMethodFragment -> hideBottomNav()
                 R.id.myPaymentMethodsFragment -> hideBottomNav()
                 R.id.addPaymentFragment -> hideBottomNav()
                 else -> showBottomNav()
             }
         }
     }
+
     private fun showBottomNav() {
-        binding.bottomNav.visibility = View.VISIBLE
+        binding.bottomNav.visible()
     }
 
     private fun hideBottomNav() {
-        binding.bottomNav.visibility = View.GONE
+        binding.bottomNav.gone()
     }
-
-
 
 }

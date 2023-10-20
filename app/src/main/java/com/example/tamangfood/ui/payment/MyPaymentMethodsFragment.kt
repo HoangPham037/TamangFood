@@ -1,17 +1,14 @@
 package com.example.tamangfood.ui.payment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentMyPaymentMethodsBinding
+import com.example.tamangfood.extensions.gone
+import com.example.tamangfood.extensions.setSafeOnClickListener
+import com.example.tamangfood.extensions.visible
 import com.example.tamangfood.ui.addpayment.model.PaymentData
 import com.example.tamangfood.ui.payment.adapter.MyPaymentAdapter
 
@@ -20,20 +17,20 @@ class MyPaymentMethodsFragment : BaseFragment<FragmentMyPaymentMethodsBinding>(
 ), IOnClickItemPaymentListener {
 
     private val shareViewModel: ShareViewModel by activityViewModels()
-    private lateinit var paymentAdapter : MyPaymentAdapter
+    private lateinit var paymentAdapter: MyPaymentAdapter
     override fun observerData() {
         super.observerData()
         shareViewModel.addPayment.observe(viewLifecycleOwner) {
             if (it == null) {
-                binding.layoutCardEmpty.visibility = View.VISIBLE
-                binding.rcMyListPayment.visibility = View.GONE
+                binding.layoutCardEmpty.visible()
+                binding.rcMyListPayment.gone()
             }
             val list = ArrayList<PaymentData>()
-            it?.let {paymentData ->
-                binding.layoutCardEmpty.visibility = View.GONE
-                binding.rcMyListPayment.visibility = View.VISIBLE
+            it?.let { paymentData ->
+                binding.layoutCardEmpty.gone()
+                binding.rcMyListPayment.visible()
                 list.add(paymentData)
-                paymentAdapter = MyPaymentAdapter(list,this)
+                paymentAdapter = MyPaymentAdapter(list, this)
                 binding.rcMyListPayment.adapter = paymentAdapter
             }
         }
@@ -41,11 +38,10 @@ class MyPaymentMethodsFragment : BaseFragment<FragmentMyPaymentMethodsBinding>(
 
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
-        binding.imgBack.setOnClickListener {
+        binding.imgBack.setSafeOnClickListener {
             findNavController().navigateUp()
         }
-        binding.btnAddCreditCard.setOnClickListener {
-            Toast.makeText(requireContext(), "clicked", Toast.LENGTH_SHORT).show()
+        binding.btnAddCreditCard.setSafeOnClickListener {
             findNavController().navigate(R.id.action_myPaymentMethodsFragment_to_addPaymentFragment)
         }
     }

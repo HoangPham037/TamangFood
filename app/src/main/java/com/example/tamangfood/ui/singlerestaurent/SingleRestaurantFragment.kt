@@ -3,6 +3,7 @@ package com.example.tamangfood.ui.singlerestaurent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager.LayoutParams
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -57,12 +58,12 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
         super.observerData()
 
         shareViewModel.selectRestaurant.observe(viewLifecycleOwner) { restaurant ->
-            featuredItemAdapter = FeaturedItemAdapter(restaurant.listProduct, this)
+            featuredItemAdapter = FeaturedItemAdapter(restaurant.product!!, this, requireContext(),LayoutParams.WRAP_CONTENT)
             binding.rcFeaturedItem.adapter = featuredItemAdapter
-            pagerAdapter = PagerAdapter(restaurant.listPage)
+            pagerAdapter = PagerAdapter(restaurant.slider!!,requireContext())
 
             binding.viewPagerRestaurant.adapter = pagerAdapter
-            restaurant.listPage?.let {
+            restaurant.slider?.let {
                 setIndicator(
                     binding.indicatorLayout,
                     it.size,
@@ -78,16 +79,6 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
                 }
             })
             binding.topText.tvNameRestaurant.text = restaurant.name
-            val listType = restaurant.listType ?: emptyList()
-            val topTextBinding = binding.topText
-            val textType = listOf(
-                topTextBinding.tvCurrency,
-                topTextBinding.tvTypeOne,
-                topTextBinding.tvTypeTwo, topTextBinding.tvCategory
-            )
-            textType.forEachIndexed { index, textView ->
-                textView.text = listType[index]
-            }
         }
     }
 

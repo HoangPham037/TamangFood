@@ -1,8 +1,12 @@
 package com.example.tamangfood.ui.featuredpartners
 
+import android.graphics.Rect
+import android.util.Log
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
@@ -21,12 +25,12 @@ class FeaturedPartnersFragment : BaseFragment<FragmentFeaturedPartnersBinding>(
     private val shareViewModel: ShareViewModel by activityViewModels()
 
     override fun observerData() {
-        super.observerData()
-        homeViewModel.dataFeaturedPartners.observe(viewLifecycleOwner) {
-            adapter = RestaurantVerticalAdapter(it, this)
-            binding.rcFeaturedPartners.adapter = adapter
-        }
-        homeViewModel.fetchListFeaturedPartners()
+//        super.observerData()
+//        homeViewModel.dataFeaturedPartners.observe(viewLifecycleOwner) {
+//            adapter = RestaurantVerticalAdapter(it, this,requireContext())
+//            binding.rcFeaturedPartners.adapter = adapter
+//        }
+//        homeViewModel.fetchListFeaturedPartners()
     }
 
     override fun setUpOnClickListener() {

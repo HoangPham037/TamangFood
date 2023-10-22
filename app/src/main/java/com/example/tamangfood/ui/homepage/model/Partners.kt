@@ -3,10 +3,10 @@ package com.example.tamangfood.ui.homepage.model
 import com.example.tamangfood.ui.singlerestaurent.model.Product
 
 data class Partners(
-    val listPage: List<ItemPager>? = null,
-    val img: Int,
-    val name: String,
-    val description: String,
-    val listType: List<String>?= null,
-    val listProduct: List<Product>
+    val slider: List<ItemPager>? = emptyList(),
+    val imgUrl: String? = "",
+    val name: String? = "",
+    val description: String? = "",
+    val product: List<Product>? = emptyList(),
+    val rating: Float? = 0f
 )

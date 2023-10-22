@@ -18,12 +18,12 @@ class BestPickFragment : BaseFragment<FragmentBestPickBinding>(
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var adapter: RestaurantVerticalAdapter
     override fun observerData() {
-        super.observerData()
-        homeViewModel.dataBestPickRestaurant.observe(viewLifecycleOwner) {
-            adapter = RestaurantVerticalAdapter(it, this)
-            binding.rcBestPick.adapter = adapter
-        }
-        homeViewModel.fetchListBestPickRestaurant()
+//        super.observerData()
+//        homeViewModel.dataBestPickRestaurant.observe(viewLifecycleOwner) {
+//            adapter = RestaurantVerticalAdapter(it, this,requireContext())
+//            binding.rcBestPick.adapter = adapter
+//        }
+//        homeViewModel.fetchListBestPickRestaurant()
     }
 
     override fun setUpOnClickListener() {

@@ -20,7 +20,7 @@ class AllRestaurantAdapter(private val myList: List<Partners>, val context: Cont
         RecyclerView.ViewHolder(binding.root) {
         private lateinit var pagerAdapter: PagerAdapter
         fun bind(partners: Partners) = with(binding) {
-            pagerAdapter = PagerAdapter(partners.listPage)
+            pagerAdapter = PagerAdapter(partners.slider, context)
             viewPagerRestaurant.adapter = pagerAdapter
             setIndicator(indicatorLayout, pagerAdapter.itemCount,context)
             setCurrentIndicator(0, indicatorLayout,context)
@@ -33,10 +33,6 @@ class AllRestaurantAdapter(private val myList: List<Partners>, val context: Cont
                 }
             })
             tvName.text = partners.name
-            tvCurrency.text = partners.listType!![0]
-            tvTypeOne.text = partners.listType[1]
-            tvTypeTwo.text = partners.listType[2]
-            tvTypeFood.text = partners.listType[3]
         }
     }
 

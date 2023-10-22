@@ -1,10 +1,10 @@
 package com.example.tamangfood.ui.singlerestaurent.model
 
 data class Product(
-    val img: Int,
-    val name: String,
-    val description: String,
-    val price: Float,
-    val listType: List<String>,
-    val type: String
-    )
+    val imgUrl: String? = "",
+    val name: String? = "",
+    val description: String? = "",
+    val price: Float? = 0f,
+    val currency: String? = "",
+    val type: String? = ""
+)

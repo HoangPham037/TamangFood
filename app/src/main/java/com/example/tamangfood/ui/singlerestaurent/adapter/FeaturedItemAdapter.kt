@@ -1,22 +1,29 @@
 package com.example.tamangfood.ui.singlerestaurent.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemFeaturedItemsBinding
-import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
+import com.example.tamangfood.extensions.loadImg
 import com.example.tamangfood.ui.singlerestaurent.IOnItemClickListener
 import com.example.tamangfood.ui.singlerestaurent.model.Product
 
-class FeaturedItemAdapter(private val myList: List<Product>, private val listener: IOnItemClickListener) :
+class FeaturedItemAdapter(
+    private val myList: List<Product>,
+    private val listener: IOnItemClickListener,
+    private val context: Context,
+    private val mode : Int
+) :
     RecyclerView.Adapter<FeaturedItemAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemFeaturedItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) = with(binding) {
-            imgFeaturedItem.setImageResource(product.img)
+            context.loadImg(product.imgUrl, imgFeaturedItem)
             tvNameItem.text = product.name
-            tvCurrency.text = product.listType[0]
-            tvNameType.text = product.listType[1]
+            val layoutManager = layoutContainer.layoutParams
+            layoutManager.width = mode
+            layoutContainer.layoutParams= layoutManager
         }
     }
 

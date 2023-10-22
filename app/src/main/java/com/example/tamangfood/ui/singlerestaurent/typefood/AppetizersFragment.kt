@@ -1,9 +1,6 @@
 package com.example.tamangfood.ui.singlerestaurent.typefood
 
-import android.util.Log
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentAppetizersBinding
@@ -22,13 +19,13 @@ class AppetizersFragment : BaseFragment<FragmentAppetizersBinding>(
     override fun observerData() {
         super.observerData()
         shareViewModel.selectRestaurant.observe(viewLifecycleOwner) {
-            val listSeaFood = it.listProduct.filter { product ->
+            val listSeaFood = it.product?.filter { product ->
                 product.type == "Appetizers"
             }
-            typeFoodAdapter = TypeFoodAdapter(listSeaFood,this)
+            typeFoodAdapter = TypeFoodAdapter(listSeaFood!!,requireContext(),this)
             binding.rcAppetizers.adapter = typeFoodAdapter
-            val listMost = it.listProduct.take(2)
-            mostPopularAdapter = TypeFoodAdapter(listMost,this)
+            val listMost = it.product.take(2)
+            mostPopularAdapter = TypeFoodAdapter(listMost,requireContext(),this)
             binding.rcMostPopulars.adapter = mostPopularAdapter
         }
     }

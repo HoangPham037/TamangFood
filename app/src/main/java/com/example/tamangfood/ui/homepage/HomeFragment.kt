@@ -2,6 +2,7 @@ package com.example.tamangfood.ui.homepage
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -30,51 +31,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     override fun observerData() {
         super.observerData()
-        observerDataPager()
-        observerDataFeaturedPartners()
-        observerDataBestPickRestaurant()
-        observerDataAllRestaurant()
+        observerDatas()
     }
 
-    private fun observerDataPager() {
-        homeViewModel.dataPager.observe(viewLifecycleOwner) {
-            pagerAdapter = PagerAdapter(it)
+    private fun observerDatas() {
+        homeViewModel.partnersList.observe(viewLifecycleOwner) {partnersList->
+            val listSlider = partnersList.flatMap {
+                it.slider!!
+            }
+            pagerAdapter = PagerAdapter(listSlider,requireContext())
             binding.viewPager.adapter = pagerAdapter
             binding.indicator.setViewPager(binding.viewPager)
-            binding.viewPager.registerOnPageChangeCallback(object :
-                ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-//                    handler.removeCallbacks(runnable)
-//                    handler.postDelayed(runnable, 3000)
-                }
-            })
-        }
-        homeViewModel.fetchDataPager()
-    }
 
-    private fun observerDataFeaturedPartners() {
-        homeViewModel.dataFeaturedPartners.observe(viewLifecycleOwner) { listFeaturedPartners ->
-            restaurantFeaturedAdapter = RestaurantAdapter(listFeaturedPartners, this)
+            restaurantFeaturedAdapter = RestaurantAdapter(partnersList, requireContext(), this)
             binding.rcFeaturedPartners.adapter = restaurantFeaturedAdapter
-        }
-        homeViewModel.fetchListFeaturedPartners()
-    }
-
-    private fun observerDataBestPickRestaurant() {
-        homeViewModel.dataBestPickRestaurant.observe(viewLifecycleOwner) { listFeaturedPartners ->
-            restaurantBestPickAdapter = RestaurantAdapter(listFeaturedPartners, this)
+            restaurantBestPickAdapter = RestaurantAdapter(partnersList, requireContext(),this)
             binding.rcBestPick.adapter = restaurantBestPickAdapter
-        }
-        homeViewModel.fetchListBestPickRestaurant()
-    }
 
-    private fun observerDataAllRestaurant() {
-        homeViewModel.dataAllRestaurant.observe(viewLifecycleOwner) { listAll ->
-            allRestaurantAdapter = AllRestaurantAdapter(listAll, requireContext())
+            allRestaurantAdapter = AllRestaurantAdapter(partnersList, requireContext())
             binding.rcAllRestaurant.adapter = allRestaurantAdapter
         }
-        homeViewModel.fetchListAllRestaurant()
     }
 
     override fun setUpOnClickListener() {

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/onBoardingContainerFragment">
+    app:startDestination="@id/searchChildFragment">
 
     <fragment
         android:id="@+id/onBoardingContainerFragment"
@@ -122,11 +122,26 @@
         android:name="com.example.tamangfood.ui.orders.OrdersFragment"
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" />
-    <fragment
+     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.tamangfood.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_singleRestaurantFragment"
+            app:destination="@id/singleRestaurantFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_axit_anim" />
+        <action
+            android:id="@+id/action_searchFragment_to_searchChildFragment"
+            app:destination="@id/searchChildFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_axit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/singleRestaurantFragment"
         android:name="com.example.tamangfood.ui.singlerestaurent.SingleRestaurantFragment"
@@ -256,5 +271,10 @@
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_axit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/searchChildFragment"
+        android:name="com.example.tamangfood.ui.search.searchchild.SearchChildFragment"
+        android:label="fragment_search_child"
+        tools:layout="@layout/fragment_search_child" />
 
 </navigation>

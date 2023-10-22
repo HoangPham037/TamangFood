@@ -1,63 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:id="@+id/layout_container"
+    android:layout_marginTop="16dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="14dp">
+    android:layout_marginEnd="10dp"
+    android:gravity="center">
 
-    <com.example.tamangfood.view.RoundRectCornerImageView
-        android:id="@+id/img_featured_item"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_featured_item_one"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_name_item"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:lineSpacingExtra="3sp"
-        android:textColor="#010F07"
-        android:textSize="@dimen/text_size_16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_featured_item"
-        tools:text="Cookie Sandwich" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_currency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/currency"
-        android:textAppearance="@style/text_description_type_"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_item" />
+        <com.example.tamangfood.view.RoundRectCornerImageView
+            android:id="@+id/img_featured_item"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_featured_item_one"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:src="@drawable/oval"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_currency"
-        app:layout_constraintStart_toEndOf="@+id/tv_currency"
-        app:layout_constraintTop_toTopOf="@+id/tv_currency" />
+        <TextView
+            android:id="@+id/tv_name_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="3sp"
+            android:textColor="#010F07"
+            android:textSize="@dimen/text_size_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_featured_item"
+            tools:text="Cookie Sandwich" />
 
-    <TextView
-        android:id="@+id/tv_name_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textAppearance="@style/text_description_type_"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView7"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageView7"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageView7"
-        tools:text="Chinese" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_item">
+
+            <TextView
+                android:textColor="#010F07"
+                android:alpha="0.64"
+                android:id="@+id/tv_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/currency"
+                android:textAppearance="@style/text_description_type_"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:src="@drawable/oval"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_currency"
+                app:layout_constraintStart_toEndOf="@+id/tv_currency"
+                app:layout_constraintTop_toTopOf="@+id/tv_currency" />
+
+            <TextView
+                android:textColor="#010F07"
+                android:alpha="0.64"
+                android:id="@+id/tv_name_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="@style/text_description_type_"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView7"
+                app:layout_constraintStart_toEndOf="@+id/appCompatImageView7"
+                app:layout_constraintTop_toTopOf="@+id/appCompatImageView7"
+                tools:text="Chinese" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

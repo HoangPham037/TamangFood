@@ -111,5 +111,7 @@
     <string name="clear_all">clear all</string>
     <string name="upcoming_orders">Upcoming orders</string>
     <string name="past_orders">past orders</string>
+    <string name="search_on_foodly">Search on foodly</string>
+    <string name="top_restaurants">Top Restaurants</string>
 
 </resources>

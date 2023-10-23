@@ -8,7 +8,9 @@ import androidx.navigation.ui.NavigationUI
 import com.example.tamangfood.databinding.ActivityMainBinding
 import com.example.tamangfood.extensions.gone
 import com.example.tamangfood.extensions.visible
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.paymentMethodFragment -> hideBottomNav()
                 R.id.myPaymentMethodsFragment -> hideBottomNav()
                 R.id.addPaymentFragment -> hideBottomNav()
+                R.id.searchChildFragment-> hideBottomNav()
                 else -> showBottomNav()
             }
         }

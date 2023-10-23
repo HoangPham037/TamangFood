@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import timber.log.Timber
 
 abstract class BaseFragment<VB: ViewBinding>(
     private val bindingLayoutInflater: (inflater: LayoutInflater) -> VB
@@ -33,6 +34,10 @@ abstract class BaseFragment<VB: ViewBinding>(
         setUpOnClickListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        Timber.tag("onResume").i("$this")
+    }
     open fun setUpView(){}
     open fun setUpOnClickListener() {}
     open fun observerData(){}

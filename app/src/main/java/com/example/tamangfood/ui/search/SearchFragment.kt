@@ -23,20 +23,19 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
     private val shareViewModel: ShareViewModel by activityViewModels()
     override fun observerData() {
         super.observerData()
-//        homeViewModel.dataAllRestaurant.observe(viewLifecycleOwner) { listPartners ->
-//            val topRestaurant = listPartners.filter {
-//                it.rating!! > 4.5f
-//            }
-//            topRestaurantAdapter = TopRestaurantAdapter(topRestaurant, this, requireContext())
-//            binding.rcTopRestaurant.adapter = topRestaurantAdapter
-//        }
-//        homeViewModel.fetchListAllRestaurant()
+        homeViewModel.partnersList.observe(viewLifecycleOwner) { listPartners ->
+            val topRestaurant = listPartners.filter {
+                it.rating!! > 4.5f
+            }
+            topRestaurantAdapter = TopRestaurantAdapter(topRestaurant, this, requireContext())
+            binding.rcTopRestaurant.adapter = topRestaurantAdapter
+        }
     }
 
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
         binding.layoutSearch.setSafeOnClickListener {
-
+            findNavController().navigate(R.id.action_searchFragment_to_searchChildFragment)
         }
 
     }

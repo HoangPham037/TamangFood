@@ -13,4 +13,6 @@ class ShareViewModel : ViewModel() {
     val selectProduct = MutableLiveData<Product>()
     val addToOrder = MutableLiveData<List<OrderData>>()
     val addPayment = MutableLiveData<PaymentData>()
+    val sendNameRestaurant = MutableLiveData<String>()
+    val sendListNameRestaurant = MutableLiveData<List<String>>()
 }

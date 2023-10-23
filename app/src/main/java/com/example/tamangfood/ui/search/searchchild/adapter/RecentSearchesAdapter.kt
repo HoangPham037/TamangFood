@@ -1,11 +1,10 @@
-package com.example.tamangfood.ui.search.searchchild
+package com.example.tamangfood.ui.search.searchchild.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemRecentSearchesBinding
-import com.example.tamangfood.ui.homepage.model.Partners
-import com.example.tamangfood.ui.search.searchchild.model.RecentSearchesData
+import com.example.tamangfood.ui.search.searchchild.local.model.RecentSearchesData
 
 class RecentSearchesAdapter(): RecyclerView.Adapter<RecentSearchesAdapter.ViewHolder>() {
     private var yourDataList = listOf<RecentSearchesData>()

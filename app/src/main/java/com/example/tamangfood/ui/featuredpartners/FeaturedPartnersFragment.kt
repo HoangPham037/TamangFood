@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
+import com.example.tamangfood.common.Config
 import com.example.tamangfood.databinding.FragmentFeaturedPartnersBinding
+import com.example.tamangfood.extensions.getMySharedPreferences
+import com.example.tamangfood.extensions.putInt
 import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.ui.featuredpartners.adapter.RestaurantVerticalAdapter
 import com.example.tamangfood.ui.homepage.HomeViewModel
@@ -25,12 +28,14 @@ class FeaturedPartnersFragment : BaseFragment<FragmentFeaturedPartnersBinding>(
     private val shareViewModel: ShareViewModel by activityViewModels()
 
     override fun observerData() {
-//        super.observerData()
-//        homeViewModel.dataFeaturedPartners.observe(viewLifecycleOwner) {
-//            adapter = RestaurantVerticalAdapter(it, this,requireContext())
-//            binding.rcFeaturedPartners.adapter = adapter
-//        }
-//        homeViewModel.fetchListFeaturedPartners()
+        super.observerData()
+        homeViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            Config.showProgressBar(binding.progress, isLoading)
+        }
+        homeViewModel.partnersList.observe(viewLifecycleOwner) {
+            adapter = RestaurantVerticalAdapter(it, this,requireContext())
+            binding.rcFeaturedPartners.adapter = adapter
+        }
     }
 
     override fun setUpOnClickListener() {

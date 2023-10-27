@@ -17,4 +17,8 @@ class RecentSearchesRepository @Inject constructor (private val recentSearchesDa
         recentSearchesDao.insertSearch(search)
     }
 
+    suspend fun deleteAll() = withContext(Dispatchers.IO) {
+        recentSearchesDao.deleteAll()
+    }
+
 }

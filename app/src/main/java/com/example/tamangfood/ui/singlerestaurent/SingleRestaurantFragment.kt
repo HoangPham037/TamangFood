@@ -17,11 +17,15 @@ import com.example.tamangfood.common.Config
 import com.example.tamangfood.common.Config.setCurrentIndicator
 import com.example.tamangfood.common.Config.setIndicator
 import com.example.tamangfood.databinding.FragmentSingleRestaurantBinding
+import com.example.tamangfood.extensions.convertToStringOneNumber
 import com.example.tamangfood.ui.homepage.adapter.PagerAdapter
 import com.example.tamangfood.ui.singlerestaurent.adapter.FeaturedItemAdapter
 import com.example.tamangfood.ui.singlerestaurent.adapter.TypeFoodVPAdapter
 import com.example.tamangfood.ui.singlerestaurent.model.Product
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import org.checkerframework.checker.units.qual.A
 
 class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
     FragmentSingleRestaurantBinding::inflate
@@ -79,6 +83,12 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
                 }
             })
             binding.topText.tvNameRestaurant.text = restaurant.name
+            binding.topText.tvCurrency.text = restaurant.currency
+            binding.topText.tvCountryOne.text = restaurant.country!![0]
+            if (restaurant.country.size >=2) {
+                binding.topText.tvCountryTwo.text = restaurant.country[1]
+            }
+            binding.topText.tvPoint.text = restaurant.rating?.convertToStringOneNumber()
         }
     }
 

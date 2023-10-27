@@ -1,11 +1,14 @@
 package com.example.tamangfood.ui.featuredpartners.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemFeatruredPartnersVerticalBinding
+import com.example.tamangfood.extensions.convertToStringOneNumber
 import com.example.tamangfood.extensions.loadImg
+import com.example.tamangfood.extensions.visible
 import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
 import com.example.tamangfood.ui.homepage.model.Partners
 
@@ -21,6 +24,15 @@ class RestaurantVerticalAdapter(
         fun bind(partners: Partners) = with(binding) {
             context.loadImg(partners.imgUrl, imgItem)
             tvNamePartner.text = partners.name
+            tvRating.text = partners.rating?.convertToStringOneNumber()
+            tvCountryOne.text = partners.country!![0]
+            if (partners.country.size >= 2) {
+                imgOval.visible()
+                tvCountryTwo.apply {
+                    visible()
+                    text = partners.country[1]
+                }
+            }
 
             val width = context.resources.displayMetrics.widthPixels
             imgItem.layoutParams.width = (width / 2) - 75

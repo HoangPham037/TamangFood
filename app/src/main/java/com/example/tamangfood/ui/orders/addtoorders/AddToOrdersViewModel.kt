@@ -3,6 +3,7 @@ package com.example.tamangfood.ui.orders.addtoorders
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.tamangfood.ui.orders.model.Cart
 
 class AddToOrdersViewModel : ViewModel() {
     private var quality = 1
@@ -23,5 +24,12 @@ class AddToOrdersViewModel : ViewModel() {
             quality--
             _qualityData.value = quality
         }
+    }
+
+    private val _dataListOrder = MutableLiveData<List<Cart>>()
+    val dataListCart : LiveData<List<Cart>> get() = _dataListOrder
+
+    fun setDataListCart(listCart: List<Cart>) {
+        _dataListOrder.value = listCart
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemFeaturedPartnersHorizontalBinding
+import com.example.tamangfood.extensions.convertToStringOneNumber
 import com.example.tamangfood.extensions.loadImg
 import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
 import com.example.tamangfood.ui.homepage.model.Partners
@@ -21,6 +22,7 @@ class RestaurantAdapter(
             context.loadImg(partners.imgUrl, imgItem)
             tvTitle.text = partners.name
             tvDescription.text = partners.description
+            tvRating.text = partners.rating?.convertToStringOneNumber()
         }
     }
 

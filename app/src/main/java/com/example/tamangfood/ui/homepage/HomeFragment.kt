@@ -1,5 +1,6 @@
 package com.example.tamangfood.ui.homepage
 
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -10,13 +11,21 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
+import com.example.tamangfood.common.Config
 import com.example.tamangfood.databinding.FragmentHomeBinding
+import com.example.tamangfood.extensions.getMySharedPreferences
+import com.example.tamangfood.extensions.putInt
+import com.example.tamangfood.extensions.putString
 import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
 import com.example.tamangfood.ui.homepage.adapter.AllRestaurantAdapter
 import com.example.tamangfood.ui.homepage.adapter.PagerAdapter
 import com.example.tamangfood.ui.homepage.adapter.RestaurantAdapter
 import com.example.tamangfood.ui.homepage.model.Partners
+import com.example.tamangfood.ui.signin.UsersData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import timber.log.Timber
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::inflate
@@ -31,26 +40,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     override fun observerData() {
         super.observerData()
-        observerDatas()
+        observerDataHomePage()
     }
 
-    private fun observerDatas() {
-        homeViewModel.partnersList.observe(viewLifecycleOwner) {partnersList->
+    private fun observerDataHomePage() {
+        homeViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            Config.showProgressBar(binding.progress, isLoading)
+        }
+        homeViewModel.partnersList.observe(viewLifecycleOwner) { partnersList ->
             val listSlider = partnersList.flatMap {
                 it.slider!!
             }
-            pagerAdapter = PagerAdapter(listSlider,requireContext())
+            pagerAdapter = PagerAdapter(listSlider, requireContext())
             binding.viewPager.adapter = pagerAdapter
             binding.indicator.setViewPager(binding.viewPager)
 
             restaurantFeaturedAdapter = RestaurantAdapter(partnersList, requireContext(), this)
             binding.rcFeaturedPartners.adapter = restaurantFeaturedAdapter
-            restaurantBestPickAdapter = RestaurantAdapter(partnersList, requireContext(),this)
+            restaurantBestPickAdapter = RestaurantAdapter(partnersList, requireContext(), this)
             binding.rcBestPick.adapter = restaurantBestPickAdapter
 
             allRestaurantAdapter = AllRestaurantAdapter(partnersList, requireContext())
             binding.rcAllRestaurant.adapter = allRestaurantAdapter
         }
+
     }
 
     override fun setUpOnClickListener() {

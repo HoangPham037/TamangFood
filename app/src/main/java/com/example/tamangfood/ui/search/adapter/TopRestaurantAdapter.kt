@@ -15,6 +15,8 @@ class TopRestaurantAdapter(private val myList: List<Partners>, private val liste
         fun bind(partners: Partners) = with(binding) {
             context.loadImg(partners.imgUrl, imgFeaturedItem)
             tvNameItem.text  = partners.name
+            tvCurrency.text = partners.currency
+            tvCountry.text = partners.country!![0]
 
             val width = context.resources.displayMetrics.widthPixels
             imgFeaturedItem.layoutParams.width = (width / 2) - 85

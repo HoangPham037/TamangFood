@@ -1,8 +1,10 @@
 package com.example.tamangfood.ui.addpayment
 
+import android.app.Activity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -10,9 +12,14 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentAddPaymentBinding
+import com.example.tamangfood.extensions.getMySharedPreferences
 import com.example.tamangfood.extensions.gone
 import com.example.tamangfood.extensions.visible
 import com.example.tamangfood.ui.addpayment.model.PaymentData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Objects
+import timber.log.Timber
 
 
 class AddPaymentFragment : BaseFragment<FragmentAddPaymentBinding>(
@@ -29,7 +36,9 @@ class AddPaymentFragment : BaseFragment<FragmentAddPaymentBinding>(
     }
 
     private val shareViewModel: ShareViewModel by activityViewModels()
-
+    val paymentItems = mutableListOf<PaymentData>()
+    private val rootRef = FirebaseFirestore.getInstance()
+    private val user = FirebaseAuth.getInstance().currentUser
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
         binding.imgBack.setOnClickListener {
@@ -37,12 +46,29 @@ class AddPaymentFragment : BaseFragment<FragmentAddPaymentBinding>(
         }
 
         binding.layoutBtnAddCard.setOnClickListener {
+            val imm =
+                requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.edtCvc.windowToken, 0)
+            imm.hideSoftInputFromWindow(binding.edtPayment.windowToken, 0)
+            imm.hideSoftInputFromWindow(binding.edtMyyyy.windowToken, 0)
             showProgress(true)
             val paymentNumber = binding.edtPayment.text.toString()
             val date = binding.edtMyyyy.text.toString()
             val cvc = binding.edtCvc.text.toString()
+
             val paymentData = PaymentData(paymentNumber, date, cvc.toInt())
-            shareViewModel.addPayment.value = paymentData
+            paymentItems.add(paymentData)
+            val paymentHashSet = hashMapOf(
+                "payment" to paymentData
+            )
+            val userRef = user?.let { it1 -> rootRef.collection("users").document(it1.uid).collection("payment").document() }
+            userRef?.set(paymentHashSet)
+                ?.addOnSuccessListener {
+                    Timber.tag("SUCCESS").i("update list payment success")
+                }
+                ?.addOnFailureListener {
+                    Timber.tag("SUCCESS").i("update list payment failed")
+                }
             showProgress(false)
             Toast.makeText(requireContext(), "Add card success", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_addPaymentFragment_to_homeFragment)

@@ -27,4 +27,10 @@ class RecentSearchesViewModel @Inject constructor(private val recentSearchesRepo
             recentSearchesRepository.insertSearch(searchesData)
         }
     }
+
+    fun deleteAllRecentSearches() {
+        viewModelScope.launch {
+            recentSearchesRepository.deleteAll()
+        }
+    }
 }

@@ -66,7 +66,7 @@
             <TextView
                 android:textColor="#010F07"
                 android:alpha="0.64"
-                android:id="@+id/tv_name_type"
+                android:id="@+id/tv_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

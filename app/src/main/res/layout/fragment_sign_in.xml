@@ -106,7 +106,8 @@
                         android:hint="@string/enter_your_email"
                         android:inputType="text"
                         android:textColor="#010F07"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:ignore="TextFields" />
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -153,7 +154,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/tv_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -173,7 +174,7 @@
                 android:paddingVertical="19dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView9">
+                app:layout_constraintTop_toBottomOf="@+id/tv_forget_password">
 
                 <TextView
                     android:id="@+id/sign_in"

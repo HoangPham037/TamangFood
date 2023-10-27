@@ -167,14 +167,6 @@
                         android:src="@drawable/ic_invisible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/img_visibility_on"
-                        android:layout_width="wrap_content"
-                        android:visibility="invisible"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_visible"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <EditText

@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.tamangfood.ui.search.searchchild.local.dao.RecentSearchesDao
 import com.example.tamangfood.ui.search.searchchild.local.model.RecentSearchesData
 
-@Database(entities = [RecentSearchesData::class], version = 1, exportSchema = false)
+@Database(entities = [RecentSearchesData::class], version = 2, exportSchema = false)
 abstract class RecentSearchesDatabase : RoomDatabase() {
     abstract fun recentSearchesDao(): RecentSearchesDao
 }

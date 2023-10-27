@@ -29,7 +29,7 @@
             android:id="@+id/tv_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/currency"
+            tools:text="@string/currency"
             android:textAppearance="@style/text_description_common"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_type_one"
+            android:id="@+id/tv_country_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -57,47 +57,28 @@
             tools:text="Chinese" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView11"
+            android:id="@+id/img_oval_two"
             android:layout_width="wrap_content"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:src="@drawable/oval"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_type_one"
+            app:layout_constraintStart_toEndOf="@+id/tv_country_one"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_type_two"
+            android:visibility="gone"
+            android:id="@+id/tv_country_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textAppearance="@style/text_description_common"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/appCompatImageView11"
+            app:layout_constraintStart_toEndOf="@+id/img_oval_two"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Americal" />
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:src="@drawable/oval"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_type_two"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textAppearance="@style/text_description_common"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/appCompatImageView12"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Deshi food" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

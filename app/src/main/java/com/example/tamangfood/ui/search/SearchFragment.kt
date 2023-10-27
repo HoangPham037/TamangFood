@@ -8,6 +8,8 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentSearchBinding
+import com.example.tamangfood.extensions.getMySharedPreferences
+import com.example.tamangfood.extensions.putInt
 import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.extensions.showLongLengthToast
 import com.example.tamangfood.ui.featuredpartners.OnItemClickListener

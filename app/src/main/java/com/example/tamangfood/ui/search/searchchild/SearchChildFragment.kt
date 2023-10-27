@@ -1,16 +1,16 @@
 package com.example.tamangfood.ui.search.searchchild
 
-import android.app.Activity
 import android.text.TextUtils
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
+import com.example.tamangfood.common.Config.hideKeyboard
 import com.example.tamangfood.databinding.FragmentSearchChildBinding
 import com.example.tamangfood.extensions.addAfterTextChangeAction
 import com.example.tamangfood.extensions.gone
@@ -31,13 +31,12 @@ class SearchChildFragment : BaseFragment<FragmentSearchChildBinding>(
 
     private val homeViewModel: HomeViewModel by viewModels()
     private val shareViewModel: ShareViewModel by activityViewModels()
-    private val recentSearchesViewModel: RecentSearchesViewModel by viewModels{
-        SavedStateViewModelFactory(requireActivity().application, this)
-    }
+    private val recentSearchesViewModel: RecentSearchesViewModel by viewModels()
+    private var searchHistoryOnScrollListener: OnScrollListener? = null
+    private var searchRestaurantOnScrollListener: OnScrollListener? = null
+
     private lateinit var recentSearchesAdapter: RecentSearchesAdapter
     private lateinit var searchRestaurantAdapter: SearchRestaurantAdapter
-    private lateinit var searchRestaurantAdapter2: SearchRestaurantAdapter
-
     override fun setUpView() {
         super.setUpView()
         binding.edtSearch.addAfterTextChangeAction { text ->
@@ -50,28 +49,49 @@ class SearchChildFragment : BaseFragment<FragmentSearchChildBinding>(
                 binding.layoutHistory.root.gone()
             }
         }
-
     }
 
     private fun hideShowLayoutHistory() {
-        searchRestaurantAdapter2 = SearchRestaurantAdapter(this)
-        recentSearchesViewModel.recentSearches.observe(viewLifecycleOwner) {
-            if (it.isNullOrEmpty()){
+        recentSearchesAdapter = RecentSearchesAdapter()
+        searchHistoryOnScrollListener = object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    hideKeyboard(requireContext(), binding.edtSearch)
+                    binding.edtSearch.clearFocus()
+                }
+            }
+        }
+        binding.layoutHistory.rcRecentSearches.addOnScrollListener(searchHistoryOnScrollListener as OnScrollListener)
+        binding.layoutHistory.rcRecentSearches.adapter = recentSearchesAdapter
+
+        recentSearchesViewModel.recentSearches.observe(viewLifecycleOwner) { recentSearchesData ->
+            if (recentSearchesData.isNullOrEmpty()) {
                 binding.layoutHistory.root.gone()
-            }else {
+                shareViewModel.listNameHistory.value = emptyList()
+            } else {
+                shareViewModel.listNameHistory.value = recentSearchesData.map { it.name.toString() }
                 binding.layoutHistory.root.visible()
-                binding.layoutHistory.rcRecentSearches.adapter = searchRestaurantAdapter2
+                recentSearchesAdapter.updateData(recentSearchesData as ArrayList<RecentSearchesData>)
+                binding.layoutHistory.clearAll.setSafeOnClickListener {
+                    clearALl()
+                    binding.layoutHistory.root.gone()
+                }
             }
         }
         recentSearchesViewModel.fetchRecentSearch()
     }
 
+    private fun clearALl() {
+        hideKeyboard(requireContext(), binding.edtSearch)
+        binding.edtSearch.clearFocus()
+        recentSearchesAdapter.clearData()
+        recentSearchesViewModel.deleteAllRecentSearches()
+    }
+
     override fun setUpOnClickListener() {
         super.setUpOnClickListener()
         binding.tvAction.setSafeOnClickListener {
-            val imm =
-                requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(binding.edtSearch.windowToken, 0)
             binding.edtSearch.clearFocus()
             binding.edtSearch.text.clear()
             binding.tvAction.gone()
@@ -80,6 +100,16 @@ class SearchChildFragment : BaseFragment<FragmentSearchChildBinding>(
 
     private fun handleTextChange(text: String) {
         searchRestaurantAdapter = SearchRestaurantAdapter(this)
+        searchRestaurantOnScrollListener = object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    hideKeyboard(requireContext(), binding.edtSearch)
+                    binding.edtSearch.clearFocus()
+                }
+            }
+        }
+        binding.rcResult.addOnScrollListener(searchRestaurantOnScrollListener as OnScrollListener)
         binding.rcResult.adapter = searchRestaurantAdapter
         val textKeyword = text.trim()
         val isEmpty = TextUtils.isEmpty(textKeyword)
@@ -87,25 +117,33 @@ class SearchChildFragment : BaseFragment<FragmentSearchChildBinding>(
         if (isEmpty) {
             binding.tvAction.gone()
             if (isFocus) {
-
-            } else {
+                binding.layoutHistory.root.visible()
             }
         } else {
-           homeViewModel.partnersList.observe(viewLifecycleOwner) {listPartners->
-
-               val list = listPartners.filter { partners -> partners.name!!.lowercase().contains(text.lowercase(),ignoreCase = true) }
-               searchRestaurantAdapter.updateList(list)
-           }
+            binding.layoutHistory.root.gone()
+            homeViewModel.partnersList.observe(viewLifecycleOwner) { listPartners ->
+                val list = listPartners.filter { partners ->
+                    partners.name!!.lowercase().contains(text.lowercase(), ignoreCase = true)
+                }
+                searchRestaurantAdapter.updateList(list)
+            }
             binding.tvAction.visible()
-
         }
     }
 
     override fun onItemClick(partners: Partners) {
+        handleSaveData(partners)
+        findNavController().navigate(R.id.action_searchChildFragment_to_resultSearchingFragment)
+    }
+
+    private fun handleSaveData(partners: Partners) {
         val name = partners.name
         val search = RecentSearchesData(name)
         shareViewModel.sendNameRestaurant.postValue(partners.name)
-        recentSearchesViewModel.insertRecentSearches(search)
-        findNavController().navigate(R.id.action_searchChildFragment_to_resultSearchingFragment)
+        shareViewModel.listNameHistory.observe(viewLifecycleOwner) {
+            if (it.isEmpty() || !it.contains(name)) {
+                recentSearchesViewModel.insertRecentSearches(search)
+            }
+        }
     }
 }

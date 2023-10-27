@@ -21,6 +21,8 @@ class FeaturedItemAdapter(
         fun bind(product: Product) = with(binding) {
             context.loadImg(product.imgUrl, imgFeaturedItem)
             tvNameItem.text = product.name
+            tvCurrency.text = product.currency
+            tvCountry.text = product.country
             val layoutManager = layoutContainer.layoutParams
             layoutManager.width = mode
             layoutContainer.layoutParams= layoutManager

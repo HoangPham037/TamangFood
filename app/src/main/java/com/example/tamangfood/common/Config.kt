@@ -1,10 +1,12 @@
 package com.example.tamangfood.common
 
+import android.app.Activity
 import android.content.Context
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -81,5 +83,11 @@ object Config {
             }
         }
 
+    }
+
+    fun hideKeyboard(context: Context, view: View) {
+        val imm =
+            context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemFeaturedPartnersHorizontalBinding
 import com.example.tamangfood.extensions.convertToStringOneNumber
 import com.example.tamangfood.extensions.loadImg
-import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
+import com.example.tamangfood.ui.featuredpartners.OnClickRestaurant
 import com.example.tamangfood.ui.homepage.model.Partners
 
 class RestaurantAdapter(
     private val myList: List<Partners>,
     private val context: Context,
-    private val listener: OnItemClickListener
+    private val listener: OnClickRestaurant
 ) :
     RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemFeaturedPartnersHorizontalBinding) :

@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemFeaturedItemsBinding
 import com.example.tamangfood.extensions.loadImg
 import com.example.tamangfood.extensions.setSafeOnClickListener
-import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
+import com.example.tamangfood.ui.featuredpartners.OnClickRestaurant
 import com.example.tamangfood.ui.homepage.model.Partners
 
-class TopRestaurantAdapter(private val myList: List<Partners>, private val listener: OnItemClickListener, private val context: Context) : RecyclerView.Adapter<TopRestaurantAdapter.ViewHolder>() {
+class TopRestaurantAdapter(private val myList: List<Partners>, private val listener: OnClickRestaurant, private val context: Context) : RecyclerView.Adapter<TopRestaurantAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemFeaturedItemsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(partners: Partners) = with(binding) {
             context.loadImg(partners.imgUrl, imgFeaturedItem)

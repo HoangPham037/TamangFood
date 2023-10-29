@@ -1,7 +1,6 @@
 package com.example.tamangfood.ui.featuredpartners.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,13 +8,13 @@ import com.example.tamangfood.databinding.ItemFeatruredPartnersVerticalBinding
 import com.example.tamangfood.extensions.convertToStringOneNumber
 import com.example.tamangfood.extensions.loadImg
 import com.example.tamangfood.extensions.visible
-import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
+import com.example.tamangfood.ui.featuredpartners.OnClickRestaurant
 import com.example.tamangfood.ui.homepage.model.Partners
 
 
 class RestaurantVerticalAdapter(
     private val myList: List<Partners>,
-    private val listener: OnItemClickListener,
+    private val listener: OnClickRestaurant,
     private val context: Context
 ) :
     RecyclerView.Adapter<RestaurantVerticalAdapter.ViewHolder>() {

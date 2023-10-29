@@ -1,6 +1,5 @@
 package com.example.tamangfood.ui.search
 
-import android.view.WindowManager.LayoutParams
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -8,18 +7,15 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentSearchBinding
-import com.example.tamangfood.extensions.getMySharedPreferences
-import com.example.tamangfood.extensions.putInt
 import com.example.tamangfood.extensions.setSafeOnClickListener
-import com.example.tamangfood.extensions.showLongLengthToast
-import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
+import com.example.tamangfood.ui.featuredpartners.OnClickRestaurant
 import com.example.tamangfood.ui.homepage.HomeViewModel
 import com.example.tamangfood.ui.homepage.model.Partners
 import com.example.tamangfood.ui.search.adapter.TopRestaurantAdapter
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(
     FragmentSearchBinding::inflate
-), OnItemClickListener {
+), OnClickRestaurant {
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var topRestaurantAdapter: TopRestaurantAdapter
     private val shareViewModel: ShareViewModel by activityViewModels()

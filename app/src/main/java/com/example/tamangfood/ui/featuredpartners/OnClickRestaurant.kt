@@ -2,6 +2,6 @@ package com.example.tamangfood.ui.featuredpartners
 
 import com.example.tamangfood.ui.homepage.model.Partners
 
-interface OnItemClickListener {
+interface OnClickRestaurant {
     fun onItemClick(partners: Partners)
 }

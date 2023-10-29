@@ -16,7 +16,7 @@ import com.example.tamangfood.extensions.addAfterTextChangeAction
 import com.example.tamangfood.extensions.gone
 import com.example.tamangfood.extensions.setSafeOnClickListener
 import com.example.tamangfood.extensions.visible
-import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
+import com.example.tamangfood.ui.featuredpartners.OnClickRestaurant
 import com.example.tamangfood.ui.homepage.HomeViewModel
 import com.example.tamangfood.ui.homepage.model.Partners
 import com.example.tamangfood.ui.search.searchchild.adapter.RecentSearchesAdapter
@@ -27,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SearchChildFragment : BaseFragment<FragmentSearchChildBinding>(
     FragmentSearchChildBinding::inflate
-), OnItemClickListener {
+), OnClickRestaurant {
 
     private val homeViewModel: HomeViewModel by viewModels()
     private val shareViewModel: ShareViewModel by activityViewModels()
@@ -99,7 +99,7 @@ class SearchChildFragment : BaseFragment<FragmentSearchChildBinding>(
     }
 
     private fun handleTextChange(text: String) {
-        searchRestaurantAdapter = SearchRestaurantAdapter(this)
+        searchRestaurantAdapter = SearchRestaurantAdapter(this,requireContext())
         searchRestaurantOnScrollListener = object : OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -125,7 +125,7 @@ class SearchChildFragment : BaseFragment<FragmentSearchChildBinding>(
                 val list = listPartners.filter { partners ->
                     partners.name!!.lowercase().contains(text.lowercase(), ignoreCase = true)
                 }
-                searchRestaurantAdapter.updateList(list)
+                searchRestaurantAdapter.updateList(list as ArrayList<Partners>)
             }
             binding.tvAction.visible()
         }

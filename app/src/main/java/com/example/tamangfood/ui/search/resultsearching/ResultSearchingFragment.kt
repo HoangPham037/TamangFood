@@ -1,10 +1,5 @@
 package com.example.tamangfood.ui.search.resultsearching
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,16 +7,15 @@ import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentResultSearchingBinding
-import com.example.tamangfood.ui.featuredpartners.OnItemClickListener
+import com.example.tamangfood.ui.featuredpartners.OnClickRestaurant
 import com.example.tamangfood.ui.homepage.HomeViewModel
 import com.example.tamangfood.ui.homepage.adapter.RestaurantAdapter
 import com.example.tamangfood.ui.homepage.model.Partners
-import com.example.tamangfood.ui.singlerestaurent.adapter.FeaturedItemAdapter
 
 
 class ResultSearchingFragment : BaseFragment<FragmentResultSearchingBinding>(
     FragmentResultSearchingBinding::inflate
-), OnItemClickListener {
+), OnClickRestaurant {
 private val shareViewModel: ShareViewModel by activityViewModels()
 private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var restaurantAdapter: RestaurantAdapter

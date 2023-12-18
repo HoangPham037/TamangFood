@@ -64,8 +64,10 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.1")
 
     //navigation
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.1")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.3.1")
+//    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.1")
+//    implementation ("androidx.navigation:navigation-ui-ktx:2.3.1")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.5.1")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.1")
 
     //page indicator view
     implementation("com.tbuonomo:dotsindicator:5.0")

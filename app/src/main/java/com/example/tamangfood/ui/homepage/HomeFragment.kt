@@ -1,5 +1,6 @@
 package com.example.tamangfood.ui.homepage
 
+import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -43,6 +44,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             binding.viewPager.adapter = pagerAdapter
             binding.indicator.setViewPager(binding.viewPager)
 
+            Log.d("22222", "observerDataHomePage: ${partnersList.size}")
             restaurantFeaturedAdapter = RestaurantAdapter(partnersList, requireContext(), this)
             binding.rcFeaturedPartners.adapter = restaurantFeaturedAdapter
             restaurantBestPickAdapter = RestaurantAdapter(partnersList, requireContext(), this)

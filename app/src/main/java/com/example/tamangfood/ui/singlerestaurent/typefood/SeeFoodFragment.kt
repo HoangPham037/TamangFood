@@ -1,6 +1,9 @@
 package com.example.tamangfood.ui.singlerestaurent.typefood
 
+import android.util.Log
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
 import com.example.tamangfood.base.BaseFragment
 import com.example.tamangfood.databinding.FragmentSeeFoodBinding
@@ -31,5 +34,6 @@ class SeeFoodFragment : BaseFragment<FragmentSeeFoodBinding>(
 
     override fun itemClick(product: Product) {
         shareViewModel.selectProduct.value = product
+//        findNavController().navigate(R.id.action_seeFoodFragment_to_addToOrdersFragment)
     }
 }

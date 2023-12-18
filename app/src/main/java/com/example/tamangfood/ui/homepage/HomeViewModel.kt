@@ -1,15 +1,9 @@
 package com.example.tamangfood.ui.homepage
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tamangfood.extensions.getMySharedPreferences
-import com.example.tamangfood.extensions.putString
 import com.example.tamangfood.ui.homepage.model.Partners
-import com.example.tamangfood.ui.signin.UsersData
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import timber.log.Timber
 
 class HomeViewModel : ViewModel() {
 

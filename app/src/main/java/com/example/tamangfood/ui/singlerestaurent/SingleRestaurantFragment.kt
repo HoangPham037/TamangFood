@@ -1,6 +1,7 @@
 package com.example.tamangfood.ui.singlerestaurent
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager.LayoutParams
@@ -62,7 +63,12 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
         super.observerData()
 
         shareViewModel.selectRestaurant.observe(viewLifecycleOwner) { restaurant ->
-            featuredItemAdapter = FeaturedItemAdapter(restaurant.product!!, this, requireContext(),LayoutParams.WRAP_CONTENT)
+            featuredItemAdapter = FeaturedItemAdapter(
+                restaurant.product!!,
+                this,
+                requireContext(),
+                LayoutParams.WRAP_CONTENT
+            )
             binding.rcFeaturedItem.adapter = featuredItemAdapter
             pagerAdapter = PagerAdapter(restaurant.slider!!,requireContext())
 
@@ -96,8 +102,8 @@ class SingleRestaurantFragment : BaseFragment<FragmentSingleRestaurantBinding>(
         super.onViewCreated(view, savedInstanceState)
         typeFoodVPAdapter = TypeFoodVPAdapter(requireActivity())
         binding.viewPager.adapter = typeFoodVPAdapter
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, postion ->
-            when (postion) {
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (position) {
                 0 -> tab.text = "See Food"
                 1 -> tab.text = "Appetizers"
             }

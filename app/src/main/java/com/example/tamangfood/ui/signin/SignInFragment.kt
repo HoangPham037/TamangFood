@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.tamangfood.R
 import com.example.tamangfood.ShareViewModel
@@ -39,7 +42,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
             signInWithEmailUsernamePassword(email, password)
-            findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
         }
 
         binding.imgVisibilityOff.setSafeOnClickListener {
@@ -59,6 +61,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(
                 if (task.isSuccessful) {
                     shareViewModel.password.value = password
                     showProgressBar(binding.progressBar, false)
+                    findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
                 } else {
                     showProgressBar(binding.progressBar, false)
                 }

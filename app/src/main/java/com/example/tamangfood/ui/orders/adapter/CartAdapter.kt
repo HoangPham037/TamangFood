@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tamangfood.databinding.ItemOrdersBinding
 import com.example.tamangfood.ui.orders.model.OrderData
 
-class OrdersAdapter(private val myList: List<OrderData>) : RecyclerView.Adapter<OrdersAdapter.ViewHolder>() {
+class CartAdapter(private val myList: List<OrderData>) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemOrdersBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(orderData: OrderData) = with(binding) {
-            tvNameProduct.text = orderData.product.name
-            tvDesProduct.text = orderData.product.description
+            tvNameProduct.text = orderData.product?.name
+            tvDesProduct.text = orderData.product?.description
             tvTotal.text = String.format("%s%d", "aud$", orderData.quality)
             tvQuality.text = orderData.quality.toString()
         }
